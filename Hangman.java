@@ -30,7 +30,7 @@ public class Hangman
             playGame(scanner);
             System.out.print("\nPlay again? (y/n): ");
             playAgain = scanner.next().toLowerCase();
-        } while (playAgain.equals("y")|| playAgain.equals("yes"));
+        } while (playAgain.equals("y") || playAgain.equals("yes"));
 
         System.out.println(CYAN + "Thanks for playing!" + RESET);
         scanner.close();
@@ -112,33 +112,40 @@ public class Hangman
             System.out.println(RESET);
 
             if (new String(guessedWord).equals(word)) {
-                System.out.println("\n" + GREEN_BOLD + "Congratulations!!!\nYou guessed the word!!!" + RESET);
+                centerText("\n" + GREEN_BOLD + "Congratulations!!! You guessed the word!!!" + RESET);
                 break;
             }
             System.out.println("Used letters: " + BLUE + usedLetters.toUpperCase() + RESET);
         }
 
         if (incorrectGuesses == maxIncorrectGuesses) {
-            System.out.println("\n" + RED_BOLD + "GAME OVER!! YOU KILLED HIM!!!" + RESET);
-            System.out.println("The word was: " + CYAN + word + RESET);
+            centerText("\n" + RED_BOLD + "GAME OVER!! YOU KILLED HIM!!!" + RESET);
+            centerText("The word was: " + CYAN + word + RESET);
         }
     }
 
-    public class WordReader {
-    
+    public static class WordReader {
         public static String getRandomWordFromFile(String filename) throws IOException {
-            List<String> words = Files.readAllLines(Paths.get(filename));
+            List<String> words;
+    
+            // Use the class loader to find the file inside the packaged app/JAR
+            try (java.io.InputStream is = Hangman.class.getResourceAsStream("/" + filename)) {
+                if (is == null) {
+                    // This exception will trigger if 'words.txt' is not correctly bundled
+                    throw new IOException("Resource file not found: " + filename + ". Ensure it is in the same directory as the .jar during packaging.");
+                }
+                // Read all lines from the InputStream
+                try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(is))) {
+                    words = reader.lines().collect(java.util.stream.Collectors.toList());
+                }
+            }
+    
+            if (words.isEmpty()) {
+                throw new IOException("Word file is empty.");
+            }
+            
             Random random = new Random();
             return words.get(random.nextInt(words.size()));
-        }
-        
-        public static void main(String[] args) {
-            try {
-                String word = getRandomWordFromFile("words.txt");
-                System.out.println("Random word from file: " + word);
-            } catch (IOException e) {
-                System.out.println("Error reading file: " + e.getMessage());
-            }
         }
     }
 
@@ -159,20 +166,18 @@ public class Hangman
             centerText(YELLOW + "  |" + RESET);
         }
         
-        if (incorrectGuesses >= 4) {
-            centerText(YELLOW + "  |" + RED + "    /|\\" + RESET); // Arms
+        if (incorrectGuesses == 2) {
+            centerText(YELLOW + "  |" + RED + "    |" + RESET);   // Body
         } else if (incorrectGuesses >= 3) {
-            centerText(YELLOW + "  |" + RED + "    /|" + RESET); 
-        } else if (incorrectGuesses >= 2) {
-            centerText(YELLOW + "  |" + RED + "     |" + RESET);
+            centerText(YELLOW + "  |" + RED + "   /|\\" + RESET); // Arms
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
         
-        if (incorrectGuesses >= 6) {
-            centerText(YELLOW + "  |" + RED + "    / \\" + RESET); // Legs
-        } else if (incorrectGuesses >= 5) {
-            centerText(YELLOW + "  |" + RED + "    /" + RESET);
+        if (incorrectGuesses >= 5) {
+            centerText(YELLOW + "  |" + RED + "   / \\" + RESET); // Legs
+        } else if (incorrectGuesses == 4) {
+            centerText(YELLOW + "  |" + RED + "   /" + RESET);    // One Leg
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
