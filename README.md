@@ -4,59 +4,53 @@ A classic, command-line implementation of the Hangman word-guessing game built e
 
 ---
 
-## 🚀 Get Started
+## 🚀 Quick Start
 
-The easiest way to play is by downloading the standalone executable from the Releases page. No Java installation is required!
+### 💾 Windows Executable (Recommended)
 
-### 💾 Standalone Windows Executable (Recommended)
+1. Go to **[Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)**
+2. Download `HangmanGame-Windows.zip`
+3. Extract and run `HangmanGame\HangmanGame.exe`
 
-1.  Go to the **[Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)** tab.
-2.  Download the latest `HangmanGame-Windows-vX.X.X.zip` file.
-3.  Extract the contents and double-click **`HangmanGame.exe`** to play instantly.
+No Java installation required!
 
 ---
 
 ## ✨ Features
 
-* **Zero Dependencies (Packaged App):** The Windows executable includes its own Java Runtime, eliminating the need for the user to install the JDK.
-* **Vibrant Console Output:** Uses ANSI colors (Red, Green, Yellow, Cyan) to clearly distinguish between correct/incorrect guesses, game status, and UI elements.
-* **Graphical Hangman:** Features a step-by-step drawing of the hangman figure that updates with each incorrect guess.
-* **File-Based Words:** Reads words dynamically from an external `words.txt` file (bundled internally).
+- **Zero Dependencies:** Includes its own Java Runtime
+- **Colorful Terminal UI:** ANSI colors for game feedback
+- **ASCII Hangman Drawing:** Updates with each wrong guess
+- **2000+ Words:** Built-in word list
 
 ---
 
-## 🛠️ Building from Source
+## 🛠️ Build from Source
 
-If you want to modify or compile the source code directly, you will need the **Java Development Kit (JDK) 14+** [I used 25.0.1 for reference].
+**Requirements:** JDK 14+
 
-### Installation and Execution (Standard Method)
+### Quick Build
 
 ```bash
-# 1. Compile the code
-javac Hangman.java
-
-# 2. Run the game (requires words.txt in the same directory)
-java Hangman
+build.bat
 ```
 
-### Packaging the Self-Contained App
-
-If you do not want to install a .zip file and use a .exe file you can package the agme yourself!
-
-To recreate the standalone executable yourself, use the following commands. (Requires WiX Toolset installed on Windows):
+### Manual Build
 
 ```bash
-# 1. Create the JAR (Bundles the source and resource file)
-jar cfe Hangman.jar Hangman *.class words.txt
+# Compile
+javac Hangman.java
 
-# 2. Run jpackage to build the self-contained application image.
+# Run directly
+java Hangman
+
+# Or create executable
+jar cfe Hangman.jar Hangman Hangman.class Hangman$WordReader.class words.txt
 jpackage --input . --name HangmanGame --main-jar Hangman.jar --main-class Hangman --type app-image --win-console
 ```
 
-The obove commands will create a HangmanGame folder containing the running .exe file. 
-
-Have fun 😉
+---
 
 ![Java](https://img.shields.io/badge/Made%20with-Java-007396.svg?style=for-the-badge&logo=java)
 
-## Author --Mikky(First release)
+**Author:** Mikky
