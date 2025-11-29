@@ -27,7 +27,7 @@ No Java installation required!
 
 ## 🛠️ Build from Source
 
-**Requirements:** JDK 14+
+**Requirements:** JDK 14+ [Recommended 25.0.1 as this was made using that only]
 
 ### Quick Build
 
@@ -51,6 +51,8 @@ jpackage --input . --name HangmanGame --main-jar Hangman.jar --main-class Hangma
 
 ---
 
+Have Fun😉
+
 ![Java](https://img.shields.io/badge/Made%20with-Java-007396.svg?style=for-the-badge&logo=java)
 
-**Author:** Mikky
+## **Author:** Mikky (1st Release)
