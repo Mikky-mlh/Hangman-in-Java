@@ -170,15 +170,17 @@ public class Hangman
         
         if (incorrectGuesses == 2) {
             centerText(YELLOW + "  |" + RED + "    |" + RESET);   // Body
-        } else if (incorrectGuesses >= 3) {
-            centerText(YELLOW + "  |" + RED + "   /|\\" + RESET); // Arms
+        } else if (incorrectGuesses == 3) {
+            centerText(YELLOW + "  |" + RED + "   /|" + RESET);   // One Arm
+        } else if (incorrectGuesses >= 4) {
+            centerText(YELLOW + "  |" + RED + "   /|\\" + RESET); // Both Arms
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
         
-        if (incorrectGuesses >= 5) {
+        if (incorrectGuesses >= 6) {
             centerText(YELLOW + "  |" + RED + "   / \\" + RESET); // Legs
-        } else if (incorrectGuesses == 4) {
+        } else if (incorrectGuesses == 5) {
             centerText(YELLOW + "  |" + RED + "   /" + RESET);    // One Leg
         } else {
             centerText(YELLOW + "  |" + RESET);
