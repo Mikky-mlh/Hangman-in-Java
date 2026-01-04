@@ -1,10 +1,4 @@
-// TODO: Hangman game in JAVA
-
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
-import java.util.stream.Collectors;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -19,8 +13,8 @@ public class Hangman
     public static final String BLUE = "\u001B[34m";
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
-    public static final String RED_BOLD = "\033[1;31m";    // For Game Over
-    public static final String GREEN_BOLD = "\033[1;32m";  // For Winning
+    public static final String RED_BOLD = "\033[1;31m";
+    public static final String GREEN_BOLD = "\033[1;32m";
 
     private static final int SCREEN_WIDTH = 60;
 
@@ -49,7 +43,7 @@ public class Hangman
         {
             System.err.println("Error: Could not read the words file. Make sure 'words.txt' exists.");
             System.err.println("Details: " + e.getMessage());
-            return; // Exit the game
+            return;
         }
         
         char[] guessedWord = new char[word.length()];
@@ -61,8 +55,6 @@ public class Hangman
         int incorrectGuesses = 0;
         int maxIncorrectGuesses = 6;
 
-        // Title Screen
-        
         centerText(CYAN + "*       WELCOME TO HANGMAN     *" + RESET);
         System.out.println("You have " + YELLOW + maxIncorrectGuesses + RESET + " attempts to guess the word.");
 
@@ -130,13 +122,10 @@ public class Hangman
         public static String getRandomWordFromFile(String filename) throws IOException {
             List<String> words;
     
-            // Use the class loader to find the file inside the packaged app/JAR
             try (java.io.InputStream is = Hangman.class.getResourceAsStream("/" + filename)) {
                 if (is == null) {
-                    // This exception will trigger if 'words.txt' is not correctly bundled
                     throw new IOException("Resource file not found: " + filename + ". Ensure it is in the same directory as the .jar during packaging.");
                 }
-                // Read all lines from the InputStream
                 try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(is))) {
                     words = reader.lines().collect(java.util.stream.Collectors.toList());
                 }
@@ -152,7 +141,6 @@ public class Hangman
     }
 
     private static void centerText(String text) {
-        // This regex removes ANSI color codes to accurately measure visible text length
         String plainText = text.replaceAll("\u001B\\[[;\\d]*m", "").replaceAll("\033\\[[;\\d]*m", "");
         int padding = (SCREEN_WIDTH - plainText.length()) / 2;
         System.out.printf("%" + padding + "s%s%n", "", text);
@@ -163,25 +151,25 @@ public class Hangman
         centerText(YELLOW + "  |    |" + RESET);
         
         if (incorrectGuesses >= 1) {
-            centerText(YELLOW + "  |" + RED + "    O" + RESET); // Head
+            centerText(YELLOW + "  |" + RED + "    O" + RESET);
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
         
         if (incorrectGuesses == 2) {
-            centerText(YELLOW + "  |" + RED + "    |" + RESET);   // Body
+            centerText(YELLOW + "  |" + RED + "    |" + RESET);
         } else if (incorrectGuesses == 3) {
-            centerText(YELLOW + "  |" + RED + "   /|" + RESET);   // One Arm
+            centerText(YELLOW + "  |" + RED + "   /|" + RESET);
         } else if (incorrectGuesses >= 4) {
-            centerText(YELLOW + "  |" + RED + "   /|\\" + RESET); // Both Arms
+            centerText(YELLOW + "  |" + RED + "   /|\\" + RESET);
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
         
         if (incorrectGuesses >= 6) {
-            centerText(YELLOW + "  |" + RED + "   / \\" + RESET); // Legs
+            centerText(YELLOW + "  |" + RED + "   / \\" + RESET);
         } else if (incorrectGuesses == 5) {
-            centerText(YELLOW + "  |" + RED + "   /" + RESET);    // One Leg
+            centerText(YELLOW + "  |" + RED + "   /" + RESET);
         } else {
             centerText(YELLOW + "  |" + RESET);
         }
