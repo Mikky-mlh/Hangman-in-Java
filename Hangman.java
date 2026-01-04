@@ -126,7 +126,8 @@ public class Hangman
                 if (is == null) {
                     throw new IOException("Resource file not found: " + filename + ". Ensure it is in the same directory as the .jar during packaging.");
                 }
-                try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(is))) {
+                try (java.io.BufferedReader reader = new java.io.BufferedReader(
+                        new java.io.InputStreamReader(is, java.nio.charset.StandardCharsets.UTF_8))) {
                     words = reader.lines().collect(java.util.stream.Collectors.toList());
                 }
             }
