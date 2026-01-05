@@ -40,36 +40,59 @@ java Hangman
 
 - 🎨 Colorful ANSI terminal graphics
 - 🖼️ ASCII hangman art progression
+- 🌐 **Fully cross-platform** - Runs on Windows, macOS, and Linux
 - 📦 Minimal requirements - Runs on JDK 14+ with no external libraries
 - 📚 2000+ word dictionary
-- 💾 Standalone Windows .exe
+- 💾 Platform-specific executables available
 
 ---
 
 ## 📦 Installation
 
 ### System Requirements
-- **Windows**: Windows 10+ (for .exe)
-- **Cross-platform**: JDK 14+ for source code
+- **JDK**: 14+ (for compilation)
+- **JRE**: 14+ (for running)
+- **OS**: Windows 10+, macOS 10.14+, or Linux (any modern distribution)
 - **Terminal**: ANSI color support recommended
 
-### 🚀 Option 1: Download Executable (Windows)
+### 🚀 Option 1: Download Platform-Specific Executable
 
 **No Java installation required** - JRE bundled in executable
 
-1. Download `HangmanGame-Windows.zip` from [Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)
-2. Extract and run `HangmanGame.exe`
+- **Windows**: Download `HangmanGame-Windows.zip` from [Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)
+- **macOS/Linux**: Coming soon (or build from source)
 
-### ☕ Option 2: Run from Source
+### ☕ Option 2: Run Universal JAR (All Platforms)
+
+**Requires JRE 14+ installed**
+
+```bash
+# Download Hangman.jar from Releases
+java -jar Hangman.jar
+```
+
+### 💻 Option 3: Build from Source (All Platforms)
 
 **Requires JDK 14+ installed**
 
+**Windows:**
+```bash
+build.bat
+```
+
+**macOS/Linux:**
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+**Manual build:**
 ```bash
 javac Hangman.java
 java Hangman
 ```
 
-**Want to build your own executable?** See [BUILD.md](./BUILD.md)
+**Want to create platform-specific executables?** See [BUILD.md](./BUILD.md)
 
 ---
 
@@ -110,11 +133,14 @@ This was my first production-ready Java game, teaching me:
 
 ## 🔧 Technical Details
 
-- **No Dependencies**: Pure Java implementation
-- **Cross-Platform**: Runs on Windows, macOS, Linux
+- **Language**: Pure Java (JDK 14+)
+- **Dependencies**: None - standard library only
+- **Cross-Platform**: 100% compatible with Windows, macOS, and Linux
+- **File Handling**: Platform-agnostic resource loading via `getResourceAsStream()`
 - **Memory Efficient**: ~2MB RAM usage
 - **Fast Startup**: <1 second load time
-- **File Size**: ~15KB source code
+- **Source Code**: ~15KB
+- **JAR Size**: ~20KB (including word dictionary)
 
 ---
 
