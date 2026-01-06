@@ -28,7 +28,7 @@ Thanks for your interest in contributing! Here's how you can help make this game
 - Keep methods focused and concise
 - Comment complex logic
 - Maintain existing ANSI color scheme
-- Test on Windows Terminal
+- Test on multiple platforms (Windows, macOS, or Linux)
 
 ## Reporting Issues
 

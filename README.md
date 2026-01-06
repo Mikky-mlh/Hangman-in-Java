@@ -40,9 +40,10 @@ java Hangman
 
 - 🎨 Colorful ANSI terminal graphics
 - 🖼️ ASCII hangman art progression
+- 🌐 **Fully cross-platform** - Runs on Windows, macOS, and Linux
 - 📦 Minimal requirements - Runs on JDK 14+ with no external libraries
 - 📚 2000+ word dictionary
-- 💾 Standalone Windows .exe
+- 💾 Platform-specific executables available
 
 ---
 
@@ -57,19 +58,40 @@ java Hangman
 
 **No Java installation required** - JRE bundled in executable
 
-1. Download `HangmanGame-Windows.zip` from [Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)
-2. Extract and run `HangmanGame.exe`
+- **Windows**: Download `HangmanGame-Windows.zip` from [Releases](https://github.com/Mikky-mlh/Hangman-in-Java/releases)
+- **macOS/Linux**: Coming soon (or build from source)
 
-### ☕ Option 2: Run from Source
+### ☕ Option 2: Run Universal JAR (All Platforms)
+
+**Requires JRE 14+ installed**
+
+```bash
+# Download Hangman.jar from Releases
+java -jar Hangman.jar
+```
+
+### 💻 Option 3: Build from Source (All Platforms)
 
 **Requires JDK 14+ installed**
 
+**Windows:**
+```bash
+build.bat
+```
+
+**macOS/Linux:**
+```bash
+chmod +x build.sh
+./build.sh
+```
+
+**Manual build:**
 ```bash
 javac Hangman.java
 java Hangman
 ```
 
-**Want to build your own executable?** See [BUILD.md](./BUILD.md)
+**Want to create platform-specific executables?** See [BUILD.md](./BUILD.md)
 
 ---
 
