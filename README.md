@@ -50,12 +50,11 @@ java Hangman
 ## 📦 Installation
 
 ### System Requirements
-- **JDK**: 14+ (for compilation)
-- **JRE**: 14+ (for running)
-- **OS**: Windows 10+, macOS 10.14+, or Linux (any modern distribution)
+- **Windows**: Windows 10+ (for .exe)
+- **Cross-platform**: JDK 14+ for source code
 - **Terminal**: ANSI color support recommended
 
-### 🚀 Option 1: Download Platform-Specific Executable
+### 🚀 Option 1: Download Executable (Windows)
 
 **No Java installation required** - JRE bundled in executable
 
@@ -133,14 +132,11 @@ This was my first production-ready Java game, teaching me:
 
 ## 🔧 Technical Details
 
-- **Language**: Pure Java (JDK 14+)
-- **Dependencies**: None - standard library only
-- **Cross-Platform**: 100% compatible with Windows, macOS, and Linux
-- **File Handling**: Platform-agnostic resource loading via `getResourceAsStream()`
+- **No Dependencies**: Pure Java implementation
+- **Cross-Platform**: Runs on Windows, macOS, Linux
 - **Memory Efficient**: ~2MB RAM usage
 - **Fast Startup**: <1 second load time
-- **Source Code**: ~15KB
-- **JAR Size**: ~20KB (including word dictionary)
+- **File Size**: ~15KB source code
 
 ---
 
